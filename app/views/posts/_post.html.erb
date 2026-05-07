@@ -9,4 +9,8 @@
     <%= post.body %>
   </div>
 
+  <p>
+    <strong>Created at:</strong>
+    <%= time_tag post.created_at, "data-local": "time", "data-format": "%B %d, %Y at %I:%M %p" %>
+  </p>
 </div>

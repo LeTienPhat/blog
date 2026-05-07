@@ -1,24 +1,87 @@
-# README
+# Blog Rails Application
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A small Ruby on Rails blog demo featuring:
 
-Things you may want to cover:
+- Posts CRUD with rich text body support
+- Nested comments for each post
+- User authentication with sessions
 
-* Ruby version
+## Getting Started
 
-* System dependencies
+### Prerequisites
 
-* Configuration
+- Ruby (compatible with Rails 8.1)
+- SQLite3
+- Bundler
 
-* Database creation
+### Setup
 
-* Database initialization
+From the `blog` directory:
 
-* How to run the test suite
+```bash
+bundle install
+bin/setup
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+This will install gems, prepare the database, and start the development server unless you pass `--skip-server`.
 
-* Deployment instructions
+### Run the app
 
-* ...
+```bash
+bin/dev
+```
+
+Then open `http://localhost:3000` in your browser.
+
+### Run tests
+
+```bash
+bundle exec rails test
+```
+
+## App Features
+
+### Posts
+
+- Create, read, update, and delete blog posts
+- Posts use Action Text for rich content (`has_rich_text :body`)
+- Posts display comments on the show page
+
+### Comments
+
+- Nested resource under posts
+- Comments broadcast updates to the associated post
+
+### Authentication
+
+- Session-based login using `User.authenticate_by`
+- Sign in, sign out, and password reset support
+- Sessions are stored server-side and tracked by cookie
+- Default seed user:
+
+```text
+email_address: example@example.com
+password: password
+```
+
+### Password Reset
+
+- Request password reset from the app
+- Reset link is sent by `PasswordsMailer`
+- Password reset token is validated before updating the user password
+
+### Additional Endpoints
+
+- `GET /up` — health check, returns `200` when the app boots successfully
+- `GET /manifest` — PWA manifest endpoint
+- `GET /service-worker` — service worker endpoint
+
+## Database
+
+This app uses SQLite3 by default. The database is configured in `config/database.yml`.
+
+## Notes
+
+- `bin/setup` can be used anytime to refresh dependencies and database state
+- Root path is set to `posts#index`
+- Authentication is enforced by default for all controllers, with unauthenticated access allowed for login and password reset actions
