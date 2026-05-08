@@ -1,9 +1,10 @@
 class PostsController < ApplicationController
+  before_action :prepare_search_params, only: %i[index]
   before_action :set_post, only: %i[ show edit update destroy ]
 
   # GET /posts or /posts.json
   def index
-    @posts = Post.all
+    @posts = Post.search_posts(Post.all, @search_params).order(created_at: :desc).page(params[:page])
   end
 
   # GET /posts/1 or /posts/1.json
@@ -67,5 +68,9 @@ class PostsController < ApplicationController
   # Only allow a list of trusted parameters through.
   def post_params
     params.expect(post: %i[title body])
+  end
+
+  def prepare_search_params
+    @search_params = params[:search] || {}
   end
 end

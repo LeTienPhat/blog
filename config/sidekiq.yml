@@ -1,0 +1,12 @@
+:concurrency: 2
+:pidfile: ./tmp/pids/sidekiq.pid
+:logfile: ./log/sidekiq.log
+
+:queues:
+  - mailers
+  - default
+:scheduler:
+  :schedule:
+    create_comment:
+      cron: '* * * * *'
+      class: 'Schedulers::TriggerCreateComment'

@@ -2,7 +2,7 @@
 #
 # Table name: comments
 #
-#  id         :integer          not null, primary key
+#  id         :bigint           not null, primary key
 #  content    :text             not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
@@ -14,7 +14,7 @@
 #
 # Foreign Keys
 #
-#  post_id  (post_id => posts.id) ON DELETE => cascade
+#  fk_rails_...  (post_id => posts.id) ON DELETE => cascade
 #
 require "test_helper"
 
