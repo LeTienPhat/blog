@@ -9,3 +9,5 @@ inherit_gem: { rubocop-rails-omakase: rubocop.yml }
 
 Style/StringLiterals:
   Enabled: false
+Layout/EmptyLineAfterMagicComment:
+  Enabled: false
