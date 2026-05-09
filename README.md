@@ -2,7 +2,7 @@
 
 A small Ruby on Rails blog demo featuring:
 
-- Posts CRUD with rich text body support
+- Posts CRUD
 - Nested comments for each post
 - User authentication with sessions
 
