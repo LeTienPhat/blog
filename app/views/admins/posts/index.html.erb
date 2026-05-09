@@ -1,0 +1,50 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Posts" %>
+
+<h1>Posts</h1>
+
+<%= simple_form_for :search, url: admins_posts_path, method: :get, html: { class: "mb-3" } do |f| %>
+  <div class="input-group">
+    <%= f.text_field :title, placeholder: "Search posts...", class: "form-control" %>
+    <div class="input-group-append">
+      <%= f.submit "Search", class: "btn btn-outline-secondary" %>
+      <%= link_to "Clear", admins_posts_path, class: "btn btn-outline-secondary" %>
+    </div>
+  </div>
+<% end %>
+
+<table id="posts" class="table">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Title</th>
+      <th scope="col">Created At</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @posts.each do |post| %>
+      <tr>
+        <th scope="row"><%= post.id %></th>
+        <td><%= link_to post.title, admins_post_path(post) %></td>
+        <td><%= post.created_at %></td>
+        <td>
+          <%= link_to "Show", admins_post_path(post) %>
+          <%= link_to "Edit", edit_admins_post_path(post) %>
+          <%= link_to "Delete", admins_post_path(post), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+        </td>
+      </tr>
+    <% end %>
+
+    <% if @posts.empty? %>
+      <tr>
+        <td colspan="4" class="text-center">No posts found.</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @posts %>
+
+<%= link_to "New post", new_admins_post_path %>

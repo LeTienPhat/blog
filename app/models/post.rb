@@ -2,15 +2,22 @@
 #
 # Table name: posts
 #
-#  id         :bigint           not null, primary key
-#  body       :text
-#  title      :string           not null
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id              :bigint           not null, primary key
+#  authorable_type :string           not null
+#  body            :text
+#  title           :string           not null
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  authorable_id   :bigint           not null
+#
+# Indexes
+#
+#  index_posts_on_authorable  (authorable_type,authorable_id)
 #
 class Post < ApplicationRecord
   has_rich_text :body
-  has_many :comments
+  has_many :comments, dependent: :destroy
+  belongs_to :authorable, polymorphic: true
 
   validates :title, presence: true
 

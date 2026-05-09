@@ -7,4 +7,24 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
-User.create!(email_address: "example@example.com", password: "password")
+
+admin = Admin.create!(email: "admin@example.com", password: "password")
+user = User.create!(email: "user@example.com", password: "password")
+
+#create posts for admin
+10.times do |i|
+  Post.create!(
+    title: "Admin Post #{i + 1}",
+    body: "This is the body of admin post #{i + 1}.",
+    authorable: admin
+  )
+end
+
+#create posts for user
+10.times do |i|
+  Post.create!(
+    title: "User Post #{i + 1}",
+    body: "This is the body of user post #{i + 1}.",
+    authorable: user
+  )
+end

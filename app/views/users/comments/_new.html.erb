@@ -1,0 +1,7 @@
+<%= form_with(url: users_post_comments_path(post), model: [post, Comment.new]) do |form| %>
+  Your comment:
+  <br>
+  <%= form.text_area :content, size: "20x5" %>
+  <br>
+  <%= form.submit "Add Comment" %>
+<% end %>

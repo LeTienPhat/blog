@@ -6,7 +6,7 @@
 #  content    :text             not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  post_id    :integer          not null
+#  post_id    :bigint           not null
 #
 # Indexes
 #
@@ -18,7 +18,6 @@
 #
 class Comment < ApplicationRecord
   belongs_to :post
-  broadcasts_to :post
 
   validates :content, presence: true
 end

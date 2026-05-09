@@ -73,3 +73,7 @@ gem "simple_form"
 gem "kaminari"
 gem "sidekiq"
 gem "sidekiq-scheduler"
+gem "devise"
+gem "pundit"
+gem "jwt"
+gem 'jsonapi-serializer'

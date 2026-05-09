@@ -1,0 +1,11 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @post %>
+
+<div>
+  <%= link_to "Edit this post", edit_admins_post_path(@post) %> |
+  <%= link_to "Back to posts", admins_posts_path %>
+  <%= button_to "Destroy this post", admins_post_path(@post), method: :delete, class: "btn btn-warning mt-2" %>
+</div>
+
+<%= render "admins/comments/comments", post: @post %>

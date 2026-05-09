@@ -26,7 +26,11 @@
   </head>
 
   <body>
-    <%= button_to "Sign out", session_path, method: :delete, class: "btn btn-warning float-end mt-4" if authenticated? %>
+    <%if current_user.present? %>
+      <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "btn btn-warning float-end mt-4" %>
+    <% elsif current_admin.present? %>
+      <%= button_to "Sign out", destroy_admin_session_path, method: :delete, class: "btn btn-warning float-end mt-4" %>
+    <% end %>
     <%= yield %>
   </body>
 </html>
