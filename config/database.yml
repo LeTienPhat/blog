@@ -27,6 +27,9 @@ production:
   queue:
     <<: *default
     database: <%= ENV["PGDATA"] %>
+  cache:
+    <<: *default
+    database: <%= ENV["PGDATA"] %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
