@@ -15,6 +15,7 @@ development:
   database: blog-development
 
 production:
+  primary:
   <<: *default
   host: <%= ENV["PGHOST"] %>
   username: <%= ENV["PGUSER"] %>
