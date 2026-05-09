@@ -1,7 +1,7 @@
 module ApiTestHelper
   def generate_jwt_token(user)
     payload = { user_id: user.id }
-    JWT.encode(payload, Rails.application.credentials.secret_key_base)
+    JWT.encode(payload, ENV["SECRET_KEY_BASE"])
   end
 
   def api_headers(user = nil)

@@ -28,6 +28,6 @@ class User < ApplicationRecord
   has_one_attached :avatar
 
   def auth_token
-    JWT.encode({ user_id: id }, Rails.application.credentials.secret_key_base)
+    JWT.encode({ user_id: id }, ENV["SECRET_KEY_BASE"])
   end
 end
