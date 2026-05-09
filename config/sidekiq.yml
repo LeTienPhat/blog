@@ -8,5 +8,5 @@
 :scheduler:
   :schedule:
     create_comment:
-      cron: '* * * * *'
+      cron: '0 * * * *'
       class: 'Schedulers::TriggerCreateComment'

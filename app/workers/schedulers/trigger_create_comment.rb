@@ -3,8 +3,6 @@ module Schedulers
     include Sidekiq::Worker
 
     def perform
-      user = User.order("RANDOM()").first
-
       if user.present? && Post.exists?
         Comment.create!(
           content: "This is a scheduled comment created at #{Time.current}",
