@@ -16,14 +16,14 @@ development:
 
 production:
   primary:
-  <<: *default
-  host: <%= ENV["PGHOST"] %>
-  username: <%= ENV["PGUSER"] %>
-  password: <%= ENV["PGPASSWORD"] %>
-  database: <%= ENV["PGDATABASE"] %>
+    <<: *default
+    host: <%= ENV["PGHOST"] %>
+    username: <%= ENV["PGUSER"] %>
+    password: <%= ENV["PGPASSWORD"] %>
+    database: <%= ENV["PGDATABASE"] %>
   cable:
-  adapter: sqlite3
-  database: <%= ENV["DATABASE_CABLE"] %>
+    adapter: sqlite3
+    database: <%= ENV["DATABASE_CABLE"] %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
