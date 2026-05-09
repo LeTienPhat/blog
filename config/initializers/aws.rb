@@ -5,7 +5,7 @@ Aws.config.update(
     ENV["AWS_ACCESS_KEY_ID"],
     ENV["AWS_SECRET_ACCESS_KEY"]
   ),
-  region: ENV["AWS_REGION"],
+  region: ENV.fetch("AWS_REGION", "us-east-1"),
   endpoint: ENV["AWS_ENDPOINT"],
   force_path_style: true # Required for LocalStack S3
 )
