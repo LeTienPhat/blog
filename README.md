@@ -60,28 +60,16 @@ bundle exec rails test
 - Default seed user:
 
 ```text
-email_address: example@example.com
+email_address: user@example.com
 password: password
 ```
 
-### Password Reset
-
-- Request password reset from the app
-- Reset link is sent by `PasswordsMailer`
-- Password reset token is validated before updating the user password
-
-### Additional Endpoints
-
-- `GET /up` — health check, returns `200` when the app boots successfully
-- `GET /manifest` — PWA manifest endpoint
-- `GET /service-worker` — service worker endpoint
-
 ## Database
 
-This app uses SQLite3 by default. The database is configured in `config/database.yml`.
+This app uses PostgreSQL by default. The database is configured in `config/database.yml`.
 
 ## Notes
 
 - `bin/setup` can be used anytime to refresh dependencies and database state
-- Root path is set to `posts#index`
+- Root path is set to `users/posts#index`
 - Authentication is enforced by default for all controllers, with unauthenticated access allowed for login and password reset actions
