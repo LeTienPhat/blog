@@ -12,7 +12,7 @@ amazon:
   access_key_id: <%= ENV["AWS_ACCESS_KEY_ID"] %>
   secret_access_key: <%= ENV["AWS_SECRET_ACCESS_KEY"] %>
   region: <%= ENV.fetch("AWS_REGION", "us-east-1") %>
-  bucket: <%= ENV["AWS_BUCKET"] %>
+  bucket: <%= ENV.fetch("AWS_BUCKET", "my-local-s3-bucket") %>
   endpoint: <%= ENV["AWS_ENDPOINT"] %>
   force_path_style: true
 
@@ -21,7 +21,7 @@ localstack:
   access_key_id: <%= ENV["AWS_ACCESS_KEY_ID"] %>
   secret_access_key: <%= ENV["AWS_SECRET_ACCESS_KEY"] %>
   region: <%= ENV.fetch("AWS_REGION", "us-east-1") %>
-  bucket: <%= ENV["AWS_BUCKET"] %>
+  bucket: <%= ENV.fetch("AWS_BUCKET", "my-local-s3-bucket") %>
   endpoint: <%= ENV["AWS_ENDPOINT"] %>
   force_path_style: true
 
