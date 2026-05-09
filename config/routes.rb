@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   end
 
   namespace :users do
+    resource :profile, only: [:show, :edit, :update], controller: :profile
     resources :posts do
       resources :comments
     end

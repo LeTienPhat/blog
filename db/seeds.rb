@@ -9,7 +9,7 @@
 #   end
 
 admin = Admin.create!(email: "admin@example.com", password: "password")
-user = User.create!(email: "user@example.com", password: "password")
+user = User.create!(email: "user@example.com", display_name: "Regular User", password: "password")
 
 # create posts for admin
 10.times do |i|

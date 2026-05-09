@@ -76,4 +76,6 @@ gem "sidekiq-scheduler"
 gem "devise"
 gem "pundit"
 gem "jwt"
-gem 'jsonapi-serializer'
+gem "jsonapi-serializer"
+gem "aws-sdk-s3"
+gem "aws-sdk-sqs"

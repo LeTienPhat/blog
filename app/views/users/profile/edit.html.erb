@@ -1,0 +1,9 @@
+<% content_for :title, "Editing Profile" %>
+
+<h1 class="mt-4">Editing Profile</h1>
+
+<%= render "form", url: users_profile_path(@user), user: @user %>
+
+<div>
+  <%= link_to "Back to profile", users_profile_path(@user) %>
+</div>

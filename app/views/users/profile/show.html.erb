@@ -1,0 +1,14 @@
+<% content_for :title, "Profile" %>
+
+<h1 class="mt-4">Profile</h1>
+
+<div id="<%= dom_id current_user %>">
+  <div>
+    <strong>Display Name:</strong>
+    <%= current_user.display_name %>
+  </div>
+  <div>
+    <strong>Avatar:</strong>
+    <%= current_user.avatar.attached? ? image_tag(current_user.avatar.variant(resize_to_limit: [200, 200])) : "No avatar uploaded" %>
+  </div>
+</div>

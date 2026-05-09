@@ -3,6 +3,7 @@
 # Table name: users
 #
 #  id                     :bigint           not null, primary key
+#  display_name           :string
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
 #  remember_created_at    :datetime
@@ -23,6 +24,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :posts, as: :authorable, dependent: :destroy
+
+  has_one_attached :avatar
 
   def auth_token
     JWT.encode({ user_id: id }, Rails.application.credentials.secret_key_base)
