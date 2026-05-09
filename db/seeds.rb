@@ -11,7 +11,7 @@
 admin = Admin.create!(email: "admin@example.com", password: "password")
 user = User.create!(email: "user@example.com", password: "password")
 
-#create posts for admin
+# create posts for admin
 10.times do |i|
   Post.create!(
     title: "Admin Post #{i + 1}",
@@ -20,7 +20,7 @@ user = User.create!(email: "user@example.com", password: "password")
   )
 end
 
-#create posts for user
+# create posts for user
 10.times do |i|
   Post.create!(
     title: "User Post #{i + 1}",

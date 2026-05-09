@@ -22,6 +22,8 @@ class Admins::PostsController < Admins::BaseController
 
   # POST admins/posts or admins/posts.json
   def create
+    @post.assign_attributes(post_params)
+
     respond_to do |format|
       if @post.save
         format.html { redirect_to admins_post_path(@post), notice: "Post was successfully created." }
@@ -69,12 +71,7 @@ class Admins::PostsController < Admins::BaseController
   end
 
   def prepare_new_post
-    @post = if request.get?
-              Post.new
-            else
-              Post.new(post_params)
-            end
-
+    @post = Post.new
     @post.authorable = current_admin
   end
 

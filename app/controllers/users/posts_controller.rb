@@ -22,6 +22,8 @@ class Users::PostsController < Users::BaseController
 
   # POST users/posts or users/posts.json
   def create
+    @post.assign_attributes(post_params)
+
     respond_to do |format|
       if @post.save
         format.html { redirect_to users_post_path(@post), notice: "Post was successfully created." }
@@ -69,12 +71,7 @@ class Users::PostsController < Users::BaseController
   end
 
   def prepare_new_post
-    @post = if request.get?
-              Post.new
-            else
-              Post.new(post_params)
-            end
-
+    @post = Post.new
     @post.authorable = current_user
   end
 
