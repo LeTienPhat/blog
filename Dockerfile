@@ -68,9 +68,17 @@ USER 1000:1000
 COPY --chown=rails:rails --from=build "${BUNDLE_PATH}" "${BUNDLE_PATH}"
 COPY --chown=rails:rails --from=build /rails /rails
 
+# Create startup script
+RUN printf '#!/bin/bash\n\
+set -e\n\
+\n\
+bundle exec sidekiq &\n\
+exec ./bin/thrust ./bin/rails server\n' > /rails/bin/start && \
+chmod +x /rails/bin/start
+
 # Entrypoint prepares the database.
 ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 
 # Start server via Thruster by default, this can be overwritten at runtime
 EXPOSE 80
-CMD ["./bin/thrust", "./bin/rails", "server"]
+CMD ["/rails/bin/start"]
