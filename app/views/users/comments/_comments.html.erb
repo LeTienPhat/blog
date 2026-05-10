@@ -1,7 +1,15 @@
-<h2>Comments</h2>
+<div class="mt-5">
+  <h2 class="mb-4">Comments</h2>
 
-<div id="comments">
-  <%= render post.comments %>
+  <div id="comments">
+    <% if post.comments.any? %>
+      <%= render post.comments %>
+    <% else %>
+      <div class="alert alert-info">
+        No comments yet. Be the first to comment!
+      </div>
+    <% end %>
+  </div>
+
+  <%= render "users/comments/new", post: post %>
 </div>
-
-<%= render "users/comments/new", post: post %>

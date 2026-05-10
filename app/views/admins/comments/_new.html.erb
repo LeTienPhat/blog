@@ -1,7 +1,14 @@
-<%= form_with(url: admins_post_comments_path(post), model: [post, Comment.new]) do |form| %>
-  Your comment:
-  <br>
-  <%= form.text_area :content, size: "20x5" %>
-  <br>
-  <%= form.submit "Add Comment" %>
-<% end %>
+<div class="card mt-4">
+  <div class="card-header">
+    <h5 class="mb-0">Add a Comment</h5>
+  </div>
+  <div class="card-body">
+    <%= form_with(url: admins_post_comments_path(post), model: [post, Comment.new]) do |form| %>
+      <div class="mb-3">
+        <%= form.label :content, "Your comment", class: "form-label" %>
+        <%= form.text_area :content, class: "form-control", rows: 4, placeholder: "Write your comment here..." %>
+      </div>
+      <%= form.submit "Add Comment", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

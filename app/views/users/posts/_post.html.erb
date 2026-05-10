@@ -1,26 +1,20 @@
-<div id="<%= dom_id post %>">
-  <div>
-    <strong>Title:</strong>
-    <%= post.title %>
+<div id="<%= dom_id post %>" class="card mb-4">
+  <div class="card-header">
+    <h5 class="card-title mb-0"><%= post.title %></h5>
   </div>
-
-  <div>
-    <strong>Body:</strong>
-    <%= post.body %>
+  <div class="card-body">
+    <p class="card-text"><%= post.body %></p>
+    <div class="row">
+      <div class="col-md-6">
+        <small class="text-muted">
+          <strong>Author:</strong> <%= post.authorable.email %> (<%= post.authorable_type %>)
+        </small>
+      </div>
+      <div class="col-md-6 text-end">
+        <small class="text-muted">
+          <strong>Created:</strong> <%= post.created_at.strftime("%B %d, %Y at %I:%M %p") %>
+        </small>
+      </div>
+    </div>
   </div>
-
-  <div>
-    <strong>Author Type:</strong>
-    <%= post.authorable_type %>
-  </div>
-
-  <div>
-    <strong>Author Email:</strong>
-    <%= post.authorable.email %>
-  </div>
-
-  <p>
-    <strong>Created at:</strong>
-    <%= post.created_at %>
-  </p>
 </div>

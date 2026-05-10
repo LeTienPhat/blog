@@ -1,12 +1,20 @@
-<% content_for :title, "Editing Post" %>
+<div class="container mt-4">
+  <% content_for :title, "Editing Post" %>
 
-<h1>Editing Post</h1>
-
-<%= render "form", url: admins_post_path(@post), post: @post %>
-
-<br>
-
-<div>
-  <%= link_to "Show this post", admins_post_path(@post) %> |
-  <%= link_to "Back to posts", admins_posts_path %>
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card border-warning">
+        <div class="card-header bg-warning text-dark">
+          <h1 class="h4 mb-0">Edit Post</h1>
+        </div>
+        <div class="card-body">
+          <%= render "form", url: admins_post_path(@post), post: @post %>
+        </div>
+        <div class="card-footer">
+          <%= link_to "Show this post", admins_post_path(@post), class: "btn btn-info me-2 text-white" %>
+          <%= link_to "Back to posts", admins_posts_path, class: "btn btn-secondary text-white" %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

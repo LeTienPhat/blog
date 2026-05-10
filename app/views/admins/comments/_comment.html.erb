@@ -1,6 +1,8 @@
-<div id="<%= dom_id(comment) %>">
-  <strong>Content:</strong>
-  <%= comment.content %>
-  <strong>Created at:</strong>
-  <%= comment.created_at %>
+<div id="<%= dom_id(comment) %>" class="card mb-3">
+  <div class="card-body">
+    <p class="card-text mb-2"><%= comment.content %></p>
+    <small class="text-muted">
+      <em>Posted on <%= comment.created_at.strftime("%B %d, %Y at %I:%M %p") %></em>
+    </small>
+  </div>
 </div>

@@ -1,11 +1,18 @@
-<p style="color: green"><%= notice %></p>
+<div class="container mt-4 mb-4">
+  <% if notice %>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      <%= notice %>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  <% end %>
 
-<%= render @post %>
+  <%= render @post %>
 
-<div>
-  <%= link_to "Edit this post", edit_users_post_path(@post) %> |
-  <%= link_to "Back to posts", users_posts_path %>
-  <%= button_to "Destroy this post", users_post_path(@post), method: :delete, class: "btn btn-warning mt-2" %>
+  <div class="mt-4">
+    <%= link_to "Edit this post", edit_users_post_path(@post), class: "btn btn-warning me-2 text-dark" %>
+    <%= link_to "Back to posts", users_posts_path, class: "btn btn-secondary me-2 text-white" %>
+    <%= button_to "Destroy this post", users_post_path(@post), method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "btn btn-danger text-white mt-2" %>
+  </div>
+
+  <%= render "users/comments/comments", post: @post %>
 </div>
-
-<%= render "users/comments/comments", post: @post %>
