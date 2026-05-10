@@ -39,6 +39,24 @@ Then open `http://localhost:3000` in your browser.
 bundle exec rails test
 ```
 
+## Background Jobs
+
+This application uses Sidekiq for processing background jobs.
+
+### Prerequisites
+
+- Redis (required for Sidekiq)
+
+### Running Sidekiq
+
+To start the Sidekiq worker process:
+
+```bash
+bundle exec sidekiq
+```
+
+Sidekiq will process jobs from the configured queues defined in `config/sidekiq.yml`.
+
 ## App Features
 
 ### Posts
